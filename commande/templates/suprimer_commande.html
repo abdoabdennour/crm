@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block centent %}
+<p> vous voulez suprimer ce produit</p>
+<form  action ="{% url 'commande:suprimer' commande.id %}" method="POST" >
+        {% csrf_token %}
+        
+        <button class="btn btn-success" type="submit">Suprimer</button> 
+        <button type="button" class="btn btn-success"><a href="{% url 'produit:produit' %}"; style = "color:cyan">Anuler</a></button>
+
+
+</form>
+{% endblock %} 

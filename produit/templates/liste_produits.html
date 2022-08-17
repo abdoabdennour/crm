@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block centent %}
+<br>
+<div class="row">
+	<div class="col-md-5">
+		<h5>Clients:{{nombre_client}}</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'client:ajouter' %}">Créer Un Client</a>
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>id</th>
+					<th>Clients</th>
+					<th>Telephone</th>
+					<th>Detaille</th>
+				</tr>
+			{% for client in clients %}	
+				<tr>
+					<th></th>
+					<th>{{client.id}}</th>
+					<th>{{client.nom}}</th>
+					<th>{{client.telephone}}</th>
+					<th><button type="button" class="btn btn-success"><a href="{% url 'client:client' client.id %}"; style = "color:cyan">detaille</a></button></th>
+				</tr>
+			{% endfor %}
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>Les Comamndes {{nombre_commande}}</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'commande:ajouter' %}">Ajouter une Commande</a>
+			<table class="table table-sm">
+				<tr>
+					<th ><button type="button" class="btn btn-success">Produit</button> </th>
+					<th><button type="button" class="btn btn-success">Client</button></th>
+					<th><button type="button" class="btn btn-success">Statu</button></th>
+					<th><button type="button" class="btn btn-success">Mise à Jour</button></th>
+					<th><button type="button" class="btn btn-success">Supprimer</button></th>
+				</tr>
+			{% for Command in commands %}	
+				<tr>
+					<th>{{Command.produit}}</th>
+					<th>{{Command.client}}</th>
+					<th>{{Command.etat}}</th>
+					<th><a href="{% url 'commande:modifier' Command.id %}">Mise à Jour</a></th>
+					<th><a href="{% url 'commande:suprimer' Command.id %}">Supprimerr</a></th>
+				</tr>
+			{% endfor %}	
+			</table>
+		</div>
+	</div>
+
+</div>
+{% endblock %} 
